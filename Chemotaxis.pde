@@ -10,7 +10,7 @@ float x, y;
 float easing = 0.05;
 void setup()
 {
-  size(750,750);
+  size(700,700);
   stroke(5);
   smooth();
   cursor(CROSS);
