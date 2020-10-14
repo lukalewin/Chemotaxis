@@ -206,12 +206,12 @@ class Moon
 class Mover {
   float x, y;
  Mover() {
-  x = (int)(Math.random()*750);
-  y = (int)(Math.random()*750);
+  x = (int)(Math.random()*701);
+  y = (int)(Math.random()*701);
  }
  void move(){
-  x = (int)(Math.random()*750);
-  y = (int)(Math.random()*750);
+  x = (int)(Math.random()*701);
+  y = (int)(Math.random()*701);
  }
  void show(){
   strokeWeight(1);
