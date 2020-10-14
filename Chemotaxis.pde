@@ -58,20 +58,7 @@ class Rocket
     myY = y;
   }
   void show()
- {
-   //triangle(375,100,350,150,400,150);
-   //rect(350,150,50,75);
-   //fill(255,0,0);
-   //triangle(350,225,350,200,330,250);
-   //triangle(400,225,400,200,420,250);
-   //rect(360,225,30,5);
-   //fill(255,165,0);
-   //triangle(365,230,385,230,375,250);
-   //fill(5);
-   //ellipse(375,175,25,25);
-   //fill(173,216,230);
-   //ellipse(375,175,23,23);
-  
+ {  
      fill(195);
      triangle(myX,myY,myX-25,myY+50,myX+25,myY+50);
      rect(myX-25,myY+50,50,75);
@@ -155,7 +142,7 @@ class Mover {
   y = (int)(Math.random()*750);
  }
  void show(){
-  fill(255);
+  fill((int)(Math.random()*256));
   ellipse(x,y,2,2);
  }
 }
