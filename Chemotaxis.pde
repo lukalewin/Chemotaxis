@@ -9,6 +9,8 @@ void setup()
   cursor(CROSS);
   frameRate(60);
   dots = new Mover[150];
+  x = 325;
+  y = 325;
   
   for(int i = 0; i < dots.length;i++)
   {
