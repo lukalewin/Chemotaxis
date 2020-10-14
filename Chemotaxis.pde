@@ -57,6 +57,7 @@ void draw()
   a.show();
   
   if (mouseActive && spaceActive) {
+   easing = 0.25;
    d.walk();
    d.show();
    a.walk();
@@ -64,6 +65,7 @@ void draw()
    e.walk();
    e.show();
   } else if (mouseActive) {
+   easing = 0.25;
    d.walk();
    d.show();
    a.walk();
@@ -71,7 +73,9 @@ void draw()
   } else if (spaceActive) {
    e.walk();
    e.show();
-  } 
+  } else if (!mouseActive) {
+   easing = 0.05; 
+  }
 }
 
 void mousePressed() {
@@ -206,12 +210,12 @@ class Moon
 class Mover {
   float x, y;
  Mover() {
-  x = (int)(Math.random()*701);
-  y = (int)(Math.random()*701);
+  x = (int)(Math.random()*750);
+  y = (int)(Math.random()*750);
  }
  void move(){
-  x = (int)(Math.random()*701);
-  y = (int)(Math.random()*701);
+  x = (int)(Math.random()*750);
+  y = (int)(Math.random()*750);
  }
  void show(){
   strokeWeight(1);
