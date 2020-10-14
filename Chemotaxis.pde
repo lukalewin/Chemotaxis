@@ -1,4 +1,11 @@
 Mover[] dots;
+Rocket a;
+Fire b;
+Moon c;
+Turbo d;
+Man e;
+boolean mouseActive = false;
+boolean spaceActive = false;
 float x, y;
 float easing = 0.05;
 void setup()
@@ -37,9 +44,11 @@ void draw()
     dots[i].move();
   }
   
-  Rocket a = new Rocket(x,y);
-  Fire b = new Fire(x,y);
-  Moon c = new Moon(50,50);
+  a = new Rocket(x,y);
+  b = new Fire(x,y);
+  c = new Moon(50,50);
+  d = new Turbo(x,y);
+  e = new Man(x,y);
   c.walk();
   c.show();
   a.walk();
@@ -47,7 +56,41 @@ void draw()
   b.show();
   a.show();
   
+  if (mouseActive && spaceActive) {
+   d.walk();
+   d.show();
+   a.walk();
+   a.show();
+   e.walk();
+   e.show();
+  } else if (mouseActive) {
+   d.walk();
+   d.show();
+   a.walk();
+   a.show();
+  } else if (spaceActive) {
+   e.walk();
+   e.show();
+  } 
 }
+
+void mousePressed() {
+  mouseActive = true;
+}
+void mouseReleased() {
+  mouseActive = false;
+}
+void keyPressed() {
+  char space = ' ';
+  if (key == space) {
+    if (spaceActive) {
+     spaceActive = false;
+    } else {
+     spaceActive = true; 
+    }
+  }
+}
+
 
 // Split up fire and rocket so that there could be a larger walk with the fire.
 
@@ -103,6 +146,33 @@ class Fire
   }
 }
 
+class Turbo
+{
+  float myX, myY;
+  Turbo(float x, float y)
+ {
+    myX = x;
+    myY = y;
+  }
+  void show(){
+     stroke(0);
+     strokeWeight(1);
+     fill(255,25,0);
+     triangle(myX-17,myY+120,myX+17,myY+120,myX,myY+195);
+     fill(255,65,0);
+     triangle(myX-15,myY+120,myX+15,myY+120,myX,myY+180);
+     fill(255,115,0);
+     triangle(myX-13,myY+120,myX+13,myY+120,myX,myY+155);
+     fill(255,145,0);
+     triangle(myX-11,myY+120,myX+11,myY+120,myX,myY+135);
+}
+  void walk()
+  {
+    myX = myX + (int)(Math.random()*7)-1;
+    myY = myY + (int)(Math.random()*7)-1;
+  }
+}
+
 class Moon
 {
   float myX, myY;
@@ -144,7 +214,37 @@ class Mover {
   y = (int)(Math.random()*750);
  }
  void show(){
+  strokeWeight(1);
   fill((int)(Math.random()*256));
   ellipse(x,y,2,2);
  }
+}
+
+class Man
+{
+  float myX, myY;
+  Man(float x, float y)
+ {
+    myX = x;
+    myY = y;
+  }
+  void show()
+ {  
+     fill(0);
+     ellipse(myX-3,myY+75,9,9);
+     fill(255);
+     ellipse(myX-3,myY+75,8,8);
+     fill(0);
+     rect(myX-4,myY+79,2,8);
+     rect(myX-3,myY+82,6,1);
+     strokeWeight(2);
+     line(myX+3,myY+82,myX+5,myY+79);
+     ellipse(myX+5,myY+79,1,1);
+     
+}
+void walk()
+  {
+    myX = myX + (int)(Math.random()*2)-1;
+    myY = myY + (int)(Math.random()*2)-1;
+  }
 }
